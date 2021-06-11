@@ -10,7 +10,7 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
-        @yield('css')
+        @stack('css')
 
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -31,16 +31,9 @@
                     <!-- Page-Title -->
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="page-title-box">
-                                <div class="float-right">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Metrica</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
-                                        <li class="breadcrumb-item active">Starter</li>
-                                    </ol>
-                                </div>
-                                <h4 class="page-title">Starter</h4>
-                            </div><!--end page-title-box-->
+
+                            @yield('content')
+                            
                         </div><!--end col-->
                     </div>
                     <!-- end page title end breadcrumb -->
@@ -62,10 +55,7 @@
         <script src="{{ asset('assets/js/waves.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
-        <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
-
-        @yield('js')
+        @stack('js')
 
         <!-- App js -->
         <script src="{{ asset('assets/js/app.js') }}"></script>
