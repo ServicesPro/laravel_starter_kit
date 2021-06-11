@@ -7,6 +7,9 @@
 - [Installation & Organization](#installation--organization)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+    - [Download source from github](#download-source-from-github)
+    - [Clone the git repository on your local machine](#clone-the-git-repository-on-your-local-machine)
+- [Features](#features)
 
 # About Laravel Starter Kit
 
@@ -41,7 +44,7 @@ Our kit being based on Laravel 8, to work well it needs:
 
 To install and use this kit, you can proceed in two ways:
 
-1.  Download source from github
+###  Download source from github
 
 After downloading the sources, unzip the file you got, navigate to the sources folder and do the following:
 
@@ -52,7 +55,7 @@ After downloading the sources, unzip the file you got, navigate to the sources f
   - Generate unique key for you kit (app):
 
     `cp .env.example .env`
-    
+
 
     `php artisan key:generate`
 
@@ -75,12 +78,84 @@ Now we can start our migrations:
 
     > We put our configuration in cache to boost our application
 
-    php artisan optimize
+    `php artisan optimize`
 
     > Maintenant nous sommes prêt à nous lancer
 
-    php artisan serve
+    `php artisan serve`
 
 
-1.  Clone the git repository on your local machine
+###  Clone the git repository on your local machine
 
+To clone the repository follow the instructions below:
+
+`git clone https://github.com/StephaneKuma/laravel_starter_kit.git`
+
+You can also rename the kit with a name of your own during the cloning process, if for example we decide to rename it `my_cool_app`: we do as follows:
+
+`git clone https://github.com/StephaneKuma/laravel_starter_kit.git my_cool_app`
+
+Then we navigate in the sources folder then we follow the following instructions:
+
+- Installs all the dependencies related to note kit:
+  
+    `composer install`
+
+  - Generate unique key for you kit (app):
+
+    `cp .env.example .env`
+
+
+    `php artisan key:generate`
+
+  - Migrate your table to a database:
+
+Before proceeding with the migrations, you must first fill in the information relating to your database in the environment file `.env` located at the root of the project:
+    
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=database
+    DB_USERNAME=user
+    DB_PASSWORD=password
+
+Now we can start our migrations:
+
+    php artisan migrate --seed
+
+  - Start the server and enjoy :) :
+
+    > We put our configuration in cache to boost our application
+
+    `php artisan optimize`
+
+    > Maintenant nous sommes prêt à nous lancer
+
+    `php artisan serve`
+
+
+# Features
+
+- [ ] Menu
+  - [ ] Dashboard
+  - [ ] Pages
+- [x] Acces Control
+  - [x] Roles
+    - [x] Permissions
+      - [ ] Create permission
+      - [x] Read permission
+      - [ ] Update permission
+      - [ ] Delete permission
+      - [x] List permissions
+      - [ ] Assign permissions to roles
+    - [ ] Create role
+    - [x] Read role
+    - [ ] Update role
+    - [ ] Delete role
+    - [x] List roles
+    - [ ] Assign role to users
+  - [ ] Users
+- [ ] System
+  - [ ] Menu
+  - [ ] Backups
+  - [ ] Settings
