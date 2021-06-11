@@ -52,6 +52,7 @@ After downloading the sources, unzip the file you got, navigate to the sources f
   - Generate unique key for you kit (app):
 
     `cp .env.example .env`
+    
 
     `php artisan key:generate`
 
@@ -59,26 +60,26 @@ After downloading the sources, unzip the file you got, navigate to the sources f
 
 Before proceeding with the migrations, you must first fill in the information relating to your database in the environment file `.env` located at the root of the project:
     
-    `DB_CONNECTION=mysql
+    DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
     DB_DATABASE=database
     DB_USERNAME=user
-    DB_PASSWORD=password`
+    DB_PASSWORD=password
 
 Now we can start our migrations:
 
-    `php artisan migrate --seed`
+    php artisan migrate --seed
 
   - Start the server and enjoy :) :
 
     > We put our configuration in cache to boost our application
 
-    `php artisan optimize`
+    php artisan optimize
 
     > Maintenant nous sommes prêt à nous lancer
 
-    `php artisan serve`
+    php artisan serve
 
 
 1.  Clone the git repository on your local machine
