@@ -147,7 +147,7 @@ Now we can start our migrations:
       - [ ] Update permission
       - [ ] Delete permission
       - [x] List permissions
-      - [ ] Assign permissions to roles
+      - [x] Assign permissions to roles
     - [x] Create role
     - [x] Read role
     - [x] Update role
