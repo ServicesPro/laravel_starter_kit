@@ -1,59 +1,84 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.auth.app', ['title' => 'Free Register',])
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('content')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@if ($errors->any())
+    <div class="alert alert-outline-warning alert-warning-shadow mb-0 alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="mdi mdi-close"></i></span>
+        </button>
+        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+    @foreach ($errors->all() as $error)
+        <div class="mt-2 alert icon-custom-alert alert-outline-pink fade show" role="alert">
+            <i class="mdi mdi-alert-outline alert-icon"></i>
+            <div class="alert-text">
+                {{ $error }}
             </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="alert-close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="mdi mdi-close text-danger"></i></span>
+                </button>
             </div>
+        </div>
+    @endforeach
+@endif
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+<form method="POST" class="form-horizontal auth-form my-4" action="{{ route('register') }}">
+    @csrf
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group mb-3">
+            <span class="auth-form-icon">
+                <i class="dripicons-user"></i>
+            </span>
+            <input type="text" name="name" value="{{ old('name') }}" required autofocus class="form-control" id="name" placeholder="Enter user name">
+        </div>
+    </div><!--end form-group-->
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+    <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-group mb-3">
+            <span class="auth-form-icon">
+                <i class="dripicons-mail"></i>
+            </span>
+            <input type="email" name="email" value="{{ old('email') }}" required class="form-control" id="email" placeholder="Enter Email">
+        </div>
+    </div><!--end form-group-->
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group mb-3">
+            <span class="auth-form-icon">
+                <i class="dripicons-lock"></i>
+            </span>
+            <input type="password" name="password" required autocomplete="new-password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+    </div><!--end form-group-->
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+    <div class="form-group">
+        {{-- <label for="conf_password">Confirm Password</label> --}}
+        <div class="input-group mb-3">
+            <span class="auth-form-icon">
+                <i class="dripicons-lock-open"></i>
+            </span>
+            <input type="password" name="password_confirmation" required class="form-control" id="conf_password" placeholder="Confirm your password">
+        </div>
+    </div><!--end form-group-->
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    <div class="form-group mb-0 row">
+        <div class="col-12 mt-2">
+            <button class="btn btn-primary btn-round btn-block waves-effect waves-light" type="submit">Register <i class="fas fa-sign-in-alt ml-1"></i></button>
+        </div><!--end col-->
+    </div> <!--end form-group-->
+</form>
+@endsection
+
+@section('login')
+<div class="m-3 text-center text-muted">
+    <p class="">Already have an account ? <a href="{{ route('login') }}" class="text-primary ml-2">Log in</a></p>
+</div>
+@endsection

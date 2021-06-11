@@ -1,36 +1,55 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.auth.app', ['title' => 'Reset Password', 'subtitle' => 'Enter your Email and instructions will be sent to you!'])
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@section('content')
+
+@if ($errors->any())
+    <div class="alert alert-outline-warning alert-warning-shadow mb-0 alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="mdi mdi-close"></i></span>
+        </button>
+        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
+
+    @foreach ($errors->all() as $error)
+        <div class="mt-2 alert icon-custom-alert alert-outline-pink fade show" role="alert">
+            <i class="mdi mdi-alert-outline alert-icon"></i>
+            <div class="alert-text">
+                {{ $error }}
+            </div>
+
+            <div class="alert-close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="mdi mdi-close text-danger"></i></span>
+                </button>
+            </div>
         </div>
+    @endforeach
+@endif
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+<form method="POST" class="form-horizontal auth-form my-4" action="{{ route('password.email') }}">
+    @csrf
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-group mb-3">
+            <span class="auth-form-icon">
+                <i class="dripicons-mail"></i>
+            </span>
+            <input type="email" name="email" value="{{ old('email') }}" required autofocus  class="form-control" id="email" placeholder="Enter Email">
+        </div>
+    </div><!--end form-group-->
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+    <div class="form-group mb-0 row">
+        <div class="col-12 mt-2">
+            <button class="btn btn-primary btn-round btn-block waves-effect waves-light" type="submit">{{ __('Email Password Reset Link') }} <i class="fas fa-sign-in-alt ml-1"></i></button>
+        </div><!--end col-->
+    </div> <!--end form-group-->
+</form><!--end form-->
+@endsection
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@section('login')
+<div class="m-3 text-center text-muted">
+    <p class="">Remember It ?  <a href="{{ route('login') }}" class="text-primary ml-2">Sign in here</a></p>
+</div>
+@endsection
