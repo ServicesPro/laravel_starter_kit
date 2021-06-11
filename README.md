@@ -148,10 +148,10 @@ Now we can start our migrations:
       - [ ] Delete permission
       - [x] List permissions
       - [ ] Assign permissions to roles
-    - [ ] Create role
+    - [x] Create role
     - [x] Read role
-    - [ ] Update role
-    - [ ] Delete role
+    - [x] Update role
+    - [x] Delete role
     - [x] List roles
     - [ ] Assign role to users
   - [ ] Users

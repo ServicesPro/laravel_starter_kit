@@ -110,13 +110,13 @@
                         active
                     @endif" href="{{ route('app.dashboard') }}"><i class="dripicons-meter"></i>Dashboard</a></li>
                     <li class="nav-item">
-                        <a class="nav-link @if (request()->routeIs('app.roles.index')) active @endif" href="{{ route('app.roles.index') }}"><i class="dripicons-user-group"></i>Roles</a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="../hospital/all-doctors.html">All Doctors</a></li>
-                            <li><a href="../hospital/add-doctor.html">Add Doctor</a></li>
-                            <li><a href="../hospital/doctor-edit.html">Doctor Edit</a></li>
-                            <li><a href="../hospital/doctor-profile.html">Doctor Profile</a></li>
-                        </ul> 
+                        <a class="nav-link @if (request()->routeIs('app.roles.index'))
+                                active
+                            @elseif (request()->routeIs('app.roles.create'))
+                                acitve
+                            @elseif (request()->routeIs('app.roles.edit'))
+                                active
+                            @endif" href="{{ route('app.roles.index') }}"><i class="dripicons-user-group"></i>Roles</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="../analytics/analytics-reports.html"><i class="dripicons-document"></i>Reports</a></li>
                 </ul>

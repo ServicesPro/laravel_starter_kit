@@ -10,6 +10,8 @@ class Module extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'slug'];
+
     public function permissions()
     {
         return $this->hasMany(Permission::class);

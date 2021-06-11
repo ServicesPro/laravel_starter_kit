@@ -5,7 +5,7 @@
  */
 
 
- 
+
 !function ($) {
     "use strict";
 
@@ -40,9 +40,9 @@
         });
 
         //Warning Message
-        
+
         $('#sa-warning').click(function () {
-            
+
             swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -89,7 +89,7 @@
                 customClass: 'animated tada'
             })
         });
-        
+
         //Parameter
         $('#sa-params').click(function () {
 
@@ -120,10 +120,10 @@
                 imageUrl: '../assets/images/logo-sm.png',
                 imageHeight: 80,
                 animation: false
-            })            
+            })
         });
 
-        
+
 
         //custom html alert
         $('#custom-html-alert').click(function () {
